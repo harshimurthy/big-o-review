@@ -188,6 +188,11 @@ http://bigocheatsheet.com/
 ### When and how might this come up?
 This comes up in interviews often. When asked to write an algorithm, be prepared to explain its big O complexity and think about how it might be optimized. It is also something you should keep in mind when writing code, as the most straightforward or brute force way of solving a problem may not be the most efficient.
 
+Questions to ask:
+- How many calcuations or comparisions need to be made for each input?
+- How fast does the number of calculations increase as the input size increases?
+- How much is your problem space reduced at each iteration of your algorithm?
+
 ### Further reading
 https://en.wikipedia.org/wiki/Big_O_notation
 
