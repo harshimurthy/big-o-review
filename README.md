@@ -57,11 +57,27 @@ def insertion_sort(arr):
 
 *O(n^c)* - polynomial
 
+Quadratic is the most common polynomal big-O notation, but there are others too.
+
+Example: fill out a 3-dimensional square matrix.
+
+```
+def build_matrix(n):
+  matrix = []
+  for i in range(n):
+    matrix[i] = []
+    for j in range(n):
+      matrix[i][j] = []
+      for k in range(n):
+        matrix[i][j][k] = i + j + k
+```
 
 *O(log n)* - logarithmic
+
 Complexity varies in proportion to the log of the input. The base of the log is generally 2; that is, the problem set is reduced by half at every iteration of the algorithm.
 
 Example: Binary search on a sorted array
+
 ```
 def binary_search(arr, target):
   # returns True if target is in arr, False otherwise
@@ -80,29 +96,100 @@ def binary_search(arr, target):
 
 *O(n log n)* - loglinear
 
+This means the algorithm is slower than linear but faster than polynomial. Usually these algorithms are those which perform O(log n) operations n times. 
+
 *O(c^n)* - exponential
 
-This means that
+This means that the algorithm runtime increases in direct proportion to some constant to the n power. This is a very inefficient algorithm and generally to be avoided.
+
+Example: Brute force fibonacci sequence
+```
+def fibonacci(n):
+  if n == 1 || n == 0:
+    return n
+  else:
+    return fibonacci(n - 1) + fibonacci(n - 2)
+```
 
 ### What does complexity mean?
 It is often said that big-O notation is used to describe the complexity of an algorithm. But it's important to note that in this case, complexity has a very specific definition of _how many calculations a program has to make relative to its input_, if we're talking about run time, and _how much space it requires relative to its input_ if we're talking about space. A more efficient, and thus less _complex_, according to this definition, algorithm, may actually look more complicated than a less efficient one.
 
+Example: Naive search vs. binary search (on a sorted array)
+```
+def search(arr, target):
+  # returns True if target is in arr, False otherwise
+  for item in arr:
+    if item == target:
+      return True
+  return False
+```
+
+```
+def binary_search(arr, target):
+  # returns True if target is in arr, False otherwise
+  if len(arr) == 0:
+    return False
+  else:
+    midpoint = len(arr) / 2
+    if arr[midpoint] < target:
+      binary_search(arr[(midpoint + 1):], target)
+    elif arr[midpoint] > target
+      binary_search(arr[0:midpoint], target)
+    else:
+      # arr[midpoint] == target
+      return True
+```
+
+The first function is fewer lines of code and simpler to explain and understand, but it is more complex from a computational perspective because it requires more comparisons to be made relative to its input.
+
 ### How accurate do I have to be?
+This is meant to give a general overview of how complex your algorithm is, it doesn't have to be exact. So for example, if you have two operations in your algorithm, each of which are O(n), the algorithm is O(n). If you have one operation that is O(n^2) and another that is O(n), your algorithm is O(n^2).
 
 ## Let's Give it a Try
 Give the big O notations for the following.
+```
+def say_hello(name):
+  print "Hello" + name + "!"
+```
+
+```
+def print_checkerboard(n):
+  for i in range(n):
+    for j in range(n):
+      if i % 2 == 0:
+        if j % 2 == 0:
+          print 'X',
+        else:
+          print ' ',
+      else:
+        if j % 2 == 0:
+          print ' ',
+        else:
+          print 'X',
+    print
+```
+
+```
+def greet(names):
+  for name in names:
+    say_hello(name)
+```
 
 ## Worst, Best, and Average Case
+Unless otherwise noted, you should assume that the big O notation refers to the upper bound of an algorithm's run time. However, it is worth considering how it performs in the best case vs. worst case and what those cases are.
+
+Example: 
+Quick sort. What is the worst case? Best case? Average case?
 
 ## Big O Notation for Common Algorithms
+http://bigocheatsheet.com/
 
 ## In Conclusion
 ### When and how might this come up?
+This comes up in interviews often. When asked to write an algorithm, be prepared to explain its big O complexity and think about how it might be optimized. It is also something you should keep in mind when writing code, as the most straightforward or brute force way of solving a problem may not be the most efficient.
 
 ### Further reading
 https://en.wikipedia.org/wiki/Big_O_notation
-
-http://bigocheatsheet.com/
 
 https://www.interviewcake.com/article/java/big-o-notation-time-and-space-complexity
 
