@@ -6,7 +6,7 @@ Big O notation and computational complexity lesson/review for WWC DC algorithms 
 Big O is a convention and notation used to describe the complexity of an algorithm relative to the size of its input. It is most commonly used to describe the run time of an algorthim, but can also be used to describe the space or memory constraints of an algorithm. It can also be called *asymptotic notation* or *Bachmann-Landau notation*. The O refers to the _order_ of a function.
 
 ### What does it look like?
-Usually, the variable _n_ is used to represent the input to an algorithm. Here are some big O notations that you will see often.
+Usually, the variable _n_ is used to represent the input to an algorithm. Here are some big O notations that you will see often. Side note not addressed in this talk: When referring to graph algorithms, big O notations are often expressed in terms of V and E, where V refers to the number of vertices in the graph and E the number of edges.
 
 *O(1)* - constant
 
